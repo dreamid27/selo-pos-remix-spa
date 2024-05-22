@@ -1,5 +1,5 @@
 {
-  "name": "selo-pos-remix-spa",
+  "name": "my-app",
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -9,6 +9,9 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
     "typecheck": "tsc",
+    "client:generate": "electric-sql generate",
+    "client:watch": "electric-sql generate --watch",
+    "db:migrate": "electric-sql with-config \"pg-migrations apply --database {{ELECTRIC_PROXY}} --directory ./db/migrations\"",
     "prebuild": "npx electric-sql generate"
   },
   "dependencies": {
@@ -45,9 +48,11 @@
     "tabs": "^0.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "wa-sqlite": "github:rhashimoto/wa-sqlite#semver:^0.9.11"
   },
   "devDependencies": {
+    "@databases/pg-migrations": "^5.0.3",
     "@remix-run/dev": "^2.9.2",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
