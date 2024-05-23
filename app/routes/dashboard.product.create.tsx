@@ -35,6 +35,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createClient } from '@supabase/supabase-js';
 import { useToast } from '~/components/ui/use-toast';
+import { useElectric } from '~/providers/s';
+import { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const supabase = createClient(
   'https://mbmrpbolsghkbcdcgjvj.supabase.co',
@@ -51,6 +54,7 @@ const formSchema = z.object({
 });
 
 export default function ProductCreate() {
+  const { db } = useElectric()!;
   const { toast } = useToast();
 
   const {
@@ -65,19 +69,43 @@ export default function ProductCreate() {
     },
   });
 
-  const handleCreateProduct = async (values: z.infer<typeof formSchema>) => {
-    //caling supabase
-    // await create();
-    await supabase.from('product').upsert({
-      name: values.name,
-      description: values.description,
-      isActive: false,
-      price: 100000,
+  useEffect(() => {
+    const syncItems = async () => {
+      // Resolves when the shape subscription has been established.
+      const shape = await db.product.sync();
+
+      // Resolves when the data has been synced into the local database.
+      await shape.synced;
+    };
+
+    navigator.storage.estimate().then((estimate) => {
+      console.log(`Quota: ${estimate.quota}`);
+      console.log(`Usage: ${estimate.usage}`);
     });
+
+    syncItems();
+  }, []);
+
+  const handleCreateProduct = async (values: z.infer<typeof formSchema>) => {
+    console.log(values, 'values');
+    await db.product.create({
+      data: {
+        id: 'selopos-' + uuidv4(),
+        name: values.name,
+        description: values.description,
+        isActive: false,
+        price: 100000,
+        image: '',
+        createdAt: new Date().toJSON(),
+        updatedAt: new Date().toJSON(),
+      },
+    });
+
+    console.log('masuk om');
     toast({
       variant: 'default',
       title: 'Scheduled: Catch up',
-      description: 'Friday, February 10, 2023 at 5:57 PM',
+      description: 'Createds',
     });
   };
 

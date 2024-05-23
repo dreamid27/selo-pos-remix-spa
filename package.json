@@ -11,8 +11,7 @@
     "typecheck": "tsc",
     "client:generate": "electric-sql generate",
     "client:watch": "electric-sql generate --watch",
-    "db:migrate": "electric-sql with-config \"pg-migrations apply --database {{ELECTRIC_PROXY}} --directory ./db/migrations\"",
-    "prebuild": "npx electric-sql generate"
+    "db:migrate": "electric-sql with-config \"pg-migrations apply --database {{ELECTRIC_PROXY}} --directory ./db/migrations\""
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.1.5",
@@ -39,7 +38,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dropdown-menu": "^0.1.1",
-    "electric-sql": "^0.11.3",
+    "electric-sql": "^0.10.0",
     "lucide-react": "^0.378.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -48,14 +47,16 @@
     "tabs": "^0.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8",
-    "wa-sqlite": "github:rhashimoto/wa-sqlite#semver:^0.9.11"
+    "uuid": "^9.0.1",
+    "wa-sqlite": "rhashimoto/wa-sqlite",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@databases/pg-migrations": "^5.0.3",
     "@remix-run/dev": "^2.9.2",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.19",

@@ -1,3 +1,5 @@
+import { useLiveQuery } from 'electric-sql/react';
+import { genUUID } from 'electric-sql/util';
 import {
   ChevronLeft,
   ChevronRight,
@@ -8,6 +10,7 @@ import {
   MoreVertical,
   Truck,
 } from 'lucide-react';
+import { useEffect } from 'react';
 
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
@@ -44,8 +47,37 @@ import {
   TableRow,
 } from '~/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+import { useElectric } from '~/providers/s';
 
 export default function Dashboard() {
+  const { db } = useElectric()!;
+  const { results } = useLiveQuery(db.product.liveMany());
+
+  const addItem = async () => {
+    await db.items.create({
+      data: {
+        value: genUUID(),
+      },
+    });
+  };
+
+  useEffect(() => {
+    const syncItems = async () => {
+      // Resolves when the shape subscription has been established.
+      const shape = await db.product.sync();
+
+      // Resolves when the data has been synced into the local database.
+      await shape.synced;
+    };
+
+    navigator.storage.estimate().then((estimate) => {
+      console.log(`Quota: ${estimate.quota}`);
+      console.log(`Usage: ${estimate.usage}`);
+    });
+
+    syncItems();
+  }, []);
+
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
@@ -59,7 +91,7 @@ export default function Dashboard() {
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button>Create New Order</Button>
+              <Button onClick={addItem}>Create New Order</Button>
             </CardFooter>
           </Card>
           <Card x-chunk="dashboard-05-chunk-1">

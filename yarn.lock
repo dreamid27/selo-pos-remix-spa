@@ -446,10 +446,10 @@
   resolved "https://registry.yarnpkg.com/@electric-sql/pglite/-/pglite-0.1.5.tgz#ad9d5356a7668b9c56af055a79f7ae82c6c41545"
   integrity sha512-eymv4ONNvoPZQTvOQIi5dbpR+J5HzEv0qQH9o/y3gvNheJV/P/NFcrbsfJZYTsDKoq7DKrTiFNexsRkJKy8x9Q==
 
-"@electric-sql/prisma-generator@1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@electric-sql/prisma-generator/-/prisma-generator-1.1.5.tgz#093affd0a476a1d2091a6571f35cbb9dca03bf1a"
-  integrity sha512-O7+DCq1QDmFY7Y5BfeD9e7ftUWpKLAQ+lz2qRuExtMtkfsvZPwAOmu6HhTBaLdo+/rZz1wnAEdnzksFv4LlgAw==
+"@electric-sql/prisma-generator@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@electric-sql/prisma-generator/-/prisma-generator-1.1.4.tgz#034b1eeaf827ab182a1a8aca38d68e5d1d6194e2"
+  integrity sha512-zZQ88uBEKIhf6lKmnzWjOs65V5uVj/i2/N9aU4jpbJIf63n9LUgUh6abv7weFkvJsGddY/6I0bgE4a400FAkxA==
   dependencies:
     "@prisma/generator-helper" "^4.11.0"
     code-block-writer "^11.0.3"
@@ -1956,6 +1956,11 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.10.tgz#04ffa7f406ab628f7f7e97ca23e290cd8ab15efc"
   integrity sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==
 
+"@types/uuid@^9.0.8":
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-9.0.8.tgz#7545ba4fc3c003d6c756f651f3bf163d8f0f29ba"
+  integrity sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==
+
 "@types/ws@^8.5.10":
   version "8.5.10"
   resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.10.tgz#4acfb517970853fa6574a3a6886791d04a396787"
@@ -3338,12 +3343,12 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
-electric-sql@^0.11.3:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/electric-sql/-/electric-sql-0.11.3.tgz#f4150a81ce728fe8747d7692dff6dc4840db2c84"
-  integrity sha512-5D9+n69ht4kgErTdTC9EUE+BhdjaaxeW12tYbzCehvSELRW7MdXrDU7Gqm0SLWYVJ+CAJWS+qfoaGt+wqXDOHA==
+electric-sql@^0.10.0:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/electric-sql/-/electric-sql-0.10.1.tgz#ea2202f045e81dbf12eba0a8aa1c27aa2aa70f5e"
+  integrity sha512-k/Ctsw7fXV75nao5E5e77Kg0RkLbYN5YgMSNQRGPYdWp5VWX6RnhwQrMm12qhteMFTDNjeVXJD3L/ArHFyWBVw==
   dependencies:
-    "@electric-sql/prisma-generator" "1.1.5"
+    "@electric-sql/prisma-generator" "1.1.4"
     "@prisma/client" "4.8.1"
     async-mutex "^0.4.0"
     base-64 "^1.0.0"
@@ -8206,6 +8211,11 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==
 
+uuid@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
+
 uvu@^0.5.0:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.5.6.tgz#2754ca20bcb0bb59b64e9985e84d2e81058502df"
@@ -8299,9 +8309,9 @@ vite@^5.0.0, vite@^5.0.11, vite@^5.1.0:
   optionalDependencies:
     fsevents "~2.3.3"
 
-"wa-sqlite@github:rhashimoto/wa-sqlite#semver:^0.9.11":
+wa-sqlite@rhashimoto/wa-sqlite:
   version "0.9.13"
-  resolved "https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/ca2084cdd188c56532ba3e272696d0b9e21a23bf"
+  resolved "https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/70931a9328b2a6510f38d360c569a283fd545ca1"
 
 wcwidth@^1.0.1:
   version "1.0.1"
